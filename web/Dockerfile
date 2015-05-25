@@ -17,7 +17,7 @@ RUN apt-get install -y nodejs rubygems
 RUN apt-get clean
 
 WORKDIR /usr/share/nginx
-
+RUN npm install npm -g
 RUN npm install -g bower
 RUN npm install -g grunt-cli
 RUN gem install sass
@@ -28,6 +28,8 @@ RUN npm install
 RUN bower --allow-root install -g
 RUN grunt build
 
+RUN chmod +x /usr/share/nginx/setup.sh
+
 # Open port and start nginx
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/usr/share/nginx/setup.sh"]

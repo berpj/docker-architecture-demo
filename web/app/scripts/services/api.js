@@ -1,23 +1,21 @@
 'use strict';
 
 angular.module('webApp.services', []).
-factory('APIservice', function($http) {
+factory('APIservice', function($http, ENV) {
   
   var APIservice = {};
   
   APIservice.getTodos = function() {
     return $http({
-      method: 'GET', 
-      //url: 'http://app:3000/todos.json'
-      url: 'http://192.168.99.100:3000/todos.json'
+      method: 'GET',
+      url: ENV.apiUrl + '/todos.json'
     });
   };
   
   APIservice.postTodo = function(todo) {
     return $http({
-      method: 'POST', 
-      //url: 'http://app:3000/todos.json'
-      url: 'http://192.168.99.100:3000/todos.json',
+      method: 'POST',
+      url: ENV.apiUrl + '/todos.json',
       headers: {
         'Content-Type': 'application/json'
       },

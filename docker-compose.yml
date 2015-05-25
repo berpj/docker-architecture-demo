@@ -1,19 +1,16 @@
 web:
   build: web/
-  links:
-    - app
   ports:
     - "80:80"
+  environment:
+    API_URL: http://192.168.99.100:3000
 app:
   build: app/
-  command: /bin/bash -c "bundle exec rake db:create && bundle exec rake db:migrate && bundle exec rails server -b 0.0.0.0"
-  links:
-    - db
   ports:
     - "3000:3000"
   environment:
     RAILS_ENV: production
-    DB_HOST: db
+    DB_HOST: 192.168.99.100
     DB_PORT: 5432
     DB_ADAPTER: postgresql
     DB_DATABASE: todo
@@ -23,12 +20,15 @@ db:
   image: macadmins/postgres
   volumes_from:
     - dbdata
+  ports:
+    - "5432:5432"
   environment:
     DB_NAME: todo
     DB_USER: todo
     DB_PASS: mypass
 dbdata:
   image: busybox
+  command: /bin/sh
   volumes:
     - /etc/postgresql
     - /var/log/postgresql

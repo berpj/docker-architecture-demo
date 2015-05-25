@@ -8,6 +8,7 @@
  *
  * Main module of the application.
  */
+ 
 angular
   .module('webApp', [
     'ngAnimate',
@@ -16,7 +17,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'webApp.services'
+    'webApp.services',
+    'config'
   ])
   
   .config(function ($routeProvider) {
@@ -28,4 +30,4 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+});
