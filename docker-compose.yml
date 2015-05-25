@@ -1,11 +1,11 @@
 web:
-  build: berpj/web-demo
+  image: berpj/web-demo
   ports:
     - "80:80"
   environment:
     API_URL: http://192.168.99.100:3000
 app:
-  build: berpj/app-demo
+  image: berpj/app-demo
   ports:
     - "3000:3000"
   environment:
