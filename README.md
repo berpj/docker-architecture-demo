@@ -1,1 +1,1 @@
-# docker-rails-demo
+# docker-architecture-demo
