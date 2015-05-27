@@ -1,16 +1,16 @@
 web:
-  image: berpj/web-demo
+  build: web/
   ports:
     - "80:80"
-  environment:
-    API_URL: http://192.168.99.100:3000
 app:
   image: berpj/app-demo
+  links:
+    - db
   ports:
     - "3000:3000"
   environment:
     RAILS_ENV: production
-    DB_HOST: 192.168.99.100
+    DB_HOST: db
     DB_PORT: 5432
     DB_ADAPTER: postgresql
     DB_DATABASE: todo
@@ -20,8 +20,6 @@ db:
   image: macadmins/postgres
   volumes_from:
     - dbdata
-  ports:
-    - "5432:5432"
   environment:
     DB_NAME: todo
     DB_USER: todo

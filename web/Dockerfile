@@ -28,8 +28,6 @@ RUN npm install
 RUN bower --allow-root install -g
 RUN grunt build
 
-RUN chmod +x /usr/share/nginx/setup.sh
-
 # Open port and start nginx
 EXPOSE 80
-CMD ["/usr/share/nginx/setup.sh"]
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
