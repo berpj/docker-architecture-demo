@@ -1,6 +1,6 @@
 FROM rails:onbuild
 
-COPY setup.sh /root/setup.sh
-RUN chmod +x /root/setup.sh
+RUN bundle exec rake db:create
+RUN bundle exec rake db:migrate
 
-CMD ["/root/setup.sh"]
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
