@@ -1,5 +1,5 @@
 web:
-  image: berpj/web-demo
+  build: web/
   ports:
     - "80:80"
 app:
