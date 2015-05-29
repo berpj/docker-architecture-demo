@@ -24,10 +24,3 @@ db:
     DB_NAME: todo
     DB_USER: todo
     DB_PASS: mypass
-dbdata:
-  image: busybox
-  command: /bin/sh
-  volumes:
-    - /etc/postgresql
-    - /var/log/postgresql
-    - /var/lib/postgresql
