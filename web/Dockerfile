@@ -3,12 +3,12 @@ FROM nginx:latest
 # Download packages
 RUN curl -sL https://deb.nodesource.com/setup | bash -
 RUN apt-get update && apt-get install -y curl \
-                                 git  \
-                                 ruby \
-                                 ruby-dev \
-                                 build-essential \
-                                 nodejs \
-                                 rubygems
+                                         git  \
+                                         ruby \
+                                         ruby-dev \
+                                         build-essential \
+                                         nodejs \
+                                         rubygems
 
 # Copy angular files
 COPY . /usr/share/nginx
